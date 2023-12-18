@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RoundBase : MonoBehaviour
 {
-    public Question currentQuestion = null;
+    //public Question currentQuestion = null;
     public Animator questionLozengeAnim;
     public TextMeshProUGUI questionMesh;
 
@@ -47,12 +47,6 @@ public class RoundBase : MonoBehaviour
 
     public virtual void ResetPlayerVariables()
     {
-        foreach (PlayerObject po in PlayerManager.Get.players)
-        {
-            po.submission = "";
-            po.submissionTime = 0;
-            po.flagForCondone = false;
-            po.wasCorrect = false;
-        }
+        
     }
 }

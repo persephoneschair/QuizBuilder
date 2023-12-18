@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Client.unity
-    guid: 504a8812f02fe5144923db66a484aa72
+    path: Assets/Scenes/QuizBuilder.unity
+    guid: 2cb86a4881782d14286b4d83041b9dfa
   m_configObjects: {}
