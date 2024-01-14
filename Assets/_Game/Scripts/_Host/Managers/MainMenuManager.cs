@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : SingletonMonoBehaviour<MainMenuManager>
 {
+    public GameObject fileBrowserBlocker;
+
+    public List<Button> allAccessButtons;
     public List<MenuButton> buttons;
     public List<GameObject> menuObjects;
 
@@ -35,6 +40,27 @@ public class MainMenuManager : SingletonMonoBehaviour<MainMenuManager>
             menuObjects[(int)selectedOption].SetActive(true);
             foreach (MenuButton mb in buttons)
                 mb.gameObject.SetActive(false);
+            if (SelectedOption == MenuButton.MenuOption.EditQuestions)
+                QuestionCreatorManager.Get.OnFilterChange();
+            else if (SelectedOption == MenuButton.MenuOption.CreateTemplate)
+                QuizTemplateManager.Get.RefreshPreviews();
+            else if (SelectedOption == MenuButton.MenuOption.BuildQuiz)
+                BuildQuizManager.Get.RefreshPreviews();
         }
+    }
+
+    public void LicensedProduct()
+    {
+        foreach (MenuButton mb in buttons)
+            mb.button.interactable = true;
+    }
+
+    public void UnlicensedProduct()
+    {
+        foreach(MenuButton mb in buttons)
+            mb.button.interactable = false;
+
+        foreach (Button aab in allAccessButtons)
+            aab.interactable = true;
     }
 }

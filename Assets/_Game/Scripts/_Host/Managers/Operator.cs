@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using NaughtyAttributes;
 using System.Linq;
+using TMPro;
 
 public class Operator : SingletonMonoBehaviour<Operator>
 {
@@ -13,6 +14,8 @@ public class Operator : SingletonMonoBehaviour<Operator>
     [Tooltip("Start the game in recovery mode to restore any saved data from a previous game crash")]
     public bool recoveryMode;
 
+    public TextMeshProUGUI copyrightMesh;
+
     public override void Awake()
     {
         base.Awake();
@@ -20,7 +23,9 @@ public class Operator : SingletonMonoBehaviour<Operator>
 
     private void Start()
     {
-        
+        copyrightMesh.text = copyrightMesh.text.Replace("[###]", Application.version);
+        StorageManager.SetUpStorage();
+        LicenseManager.Get.InitialiseLicense();
     }
 
     [Button]
